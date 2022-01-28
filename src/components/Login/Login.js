@@ -1,11 +1,13 @@
-import { Container, Typography, TextField, Button, CircularProgress, Alert } from '@mui/material';
+import { Container, Typography, TextField, Alert } from '@mui/material';
 import React, { useState } from 'react';
 import { Grid } from '@mui/material';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
-import GoogleIcon from '@mui/icons-material/Google';
+import loading from './../../images/loginloading.gif'
+import LoginBanner from './../../images/loginbanner.png';
+import './Login.css'
 
-const Login = () => {
+const Login = ({limit}) => {
   const [loginData, setLoginData] = useState({});
   const { user, loginUser, signInWithGoogle, isLoading, authError } = useAuth();
 
@@ -30,12 +32,12 @@ const Login = () => {
   return (
     <Container>
       <Grid container spacing={2}>
-        <Grid item sx={{ mt: 8 }} xs={12} md={6}>
+        <Grid item sx={{ mt: 8 }} xs={12} md={6} lg={6}>
           <Typography variant="body1" gutterBottom>Login</Typography>
           <form onSubmit={handleLoginSubmit}>
             <TextField
               sx={{ width: '75%', m: 1 }}
-              id="standard-basic"
+              id="standard-search"
               label="Your Email"
               name="email"
               onChange={handleOnChange}
@@ -49,20 +51,30 @@ const Login = () => {
               onChange={handleOnChange}
               variant="standard" />
 
-            <Button sx={{ width: '75%', m: 1 }} type="submit" variant="contained">Login</Button>
+            <div>
+            <button className='Signinbtn me-2 mb-2' sx={{ width: '75%', m: 1 }} type="submit" variant="contained"><i className="fal fa-lock-open"></i> Login</button>
             <NavLink
               style={{ textDecoration: 'none' }}
               to="/register">
-              <Button variant="text">New User? Please Register</Button>
+              <a href='#register'>New User? Please Register</a>
             </NavLink>
-            {isLoading && <CircularProgress />}
-            {user?.email && <Alert severity="success">Login successfully!</Alert>}
-            {authError && <Alert severity="error">{authError}</Alert>}
+            </div>
+            <br/>
+            {isLoading && <img src={loading} alt='' className='position-absolute top-50 start-50 loader translate-middle' />}
+            {user?.email && <><Alert sx={{width:'76%'}} severity="success">You account is logged in successfully</Alert><br/></>}
+            {authError && <><Alert sx={{width:'76%'}} severity="error">{authError.slice(16,limit)}</Alert> <br/></>}
           </form>
-          <Button onClick={handleGoogleSignIn} variant="contained"><GoogleIcon/>oogle Sign In</Button>
+          <div>
+          <button onClick={handleGoogleSignIn} className='Signinbtn p-1 bt-2 me-3 d-flex'><img style={{width:'40px',height:'40px'}} className='' src='https://i.ibb.co/fDXP2wb/google.png' alt=''></img><p style={{marginBottom:'-10px'}} className='pt-1'>Sign in with Google</p></button>
+          </div>
         </Grid>
-
+        <Grid item sx={{ mt: 8 }} xs={12} md={6} lg={6}>
+        <img className='w-100' src={LoginBanner} alt=''></img>
+        </Grid>
       </Grid>
+      <br/>
+      <br/>
+      <br/>
     </Container>
   );
 };

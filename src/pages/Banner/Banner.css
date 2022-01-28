@@ -44,6 +44,7 @@
         margin-right: -20px;
      }
      .home-banner-text{
+        margin-left: 100px;
         width: 50%;
         margin-top: 50px;
         height: 200px;
@@ -51,6 +52,17 @@
      .home-banner-text h1{
        color: rgb(255, 255, 255);
      }
-     .home-banner-text p{
-       color: rgb(255, 0, 255);
+     .customp{
+       color: rgb(0, 0, 0);
      }
+@media (max-width:456px){
+   .cbr{
+      display: none;
+   }
+   .home-banner-text{
+      margin-left: 0px;
+      width: 50%;
+      margin-top: 50px;
+      height: 200px;
+   }
+   }

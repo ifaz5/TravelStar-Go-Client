@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ManageBlog from '../ManageBlog/ManageBlog';
-
+import './ManageBlogs.css'
 const ManageBlogs = () => {
     const [services, setServices] = useState([]);
     const [reload, setReload] = useState(false);
@@ -49,28 +49,18 @@ const ManageBlogs = () => {
     };
 
     return (
-        <div className='d-flex'>
-            <div className="ml-2">
-            <table>
-                <thead>
-                    <tbody>
-                        <tr className="bg-blue-500 text-white text-center">
-                            <th className="px-3 ">Product Name</th>
-                            <th className="px-3 ">Product Price</th>
-                            <th className="px-3 ">Admin</th>
-                            <th className="px-3 ">Status</th>                                         
-                            <th className="px-3 ">Delete</th>
-                            <th className="px-3 ">Action</th>                                         
-                        </tr>
-                            {
+        <div class="row">
+        <div class="col-sm-4 col-md-2 border-1">Blog Name</div>
+        <div class="col-sm-4 col-md-2 border-1">Expense</div>
+        <div class="col-sm-4 col-md-3 border-1">Blogger</div>
+        <div class="col-sm-4 col-md-2 border-1">Status</div>
+        <div class="col-sm-4 col-md-1 border-1">Delete</div>
+        <div class="col-sm-4 col-md-2 border-1">Action</div>
+        {
                                 services.map(service => <ManageBlog key={service._id} service={service} handleDeleteService={handleDeleteService} handleUpdateStatus={handleConfirm}/>
                                     )
                             }
-                    </tbody>
-                </thead>
-            </table>
-        </div>
-        </div>
+</div>
         
     )
 };

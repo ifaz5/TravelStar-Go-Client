@@ -30,8 +30,7 @@ const drawerWidth = 200;
 function Dashboard(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
-    const { admin, logout } = useFirebase();
-    // const {user} = useAuth();
+    const { admin, logout, user } = useFirebase();
     console.log(admin);
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -42,23 +41,21 @@ function Dashboard(props) {
         <div>
             <Toolbar />
             <Divider />
-            <Link style={{ textDecoration: 'none', color: 'white',marginLeft:'10px' }} to='/'><Button variant="outlined" sx={{ width: '90%',my:2 }}><i className="fal fa-home"></i> Home</Button></Link>
+            <Link style={{ textDecoration: 'none', color: 'white',marginLeft:'10px'}} to='/'><Button variant="outlined" sx={{ width: '90%',my:2 }}><i className="fal fa-home"></i> Home</Button></Link>
             <Link style={{ textDecoration: 'none', color: 'white',marginLeft:'10px' }} to={`${url}/writeBlog`}><Button variant="outlined" sx={{  width: '90%' }}><i class="fal fa-layer-plus"></i> Add Blog</Button></Link>
-            <List>
+            <List style={{marginTop:'5px' }}>
                 
                 {
                     admin && <Box>                        
-                        <Link style={{ textDecoration: 'none', color: 'white',marginLeft:'10px' }} to={`${url}/makeAdmin`}><Button variant="outlined" sx={{ width: '90%' }}><i class="fal fa-user-shield"></i> Make Admin</Button></Link>
+                        <Link style={{ textDecoration: 'none', color: 'white',marginLeft:'10px' }} to={`${url}/makeAdmin`}><Button variant="outlined" sx={{ width: '90%' }}><i class="fal fa-user-cog"></i>Make Admin</Button></Link>
                         <Link style={{ textDecoration: 'none', color: 'white',marginLeft:'10px' }} to={`${url}/manageAllblogs`}><Button variant="outlined" sx={{ mt: 2, width: '90%' }}><i class="fal fa-tasks"></i> Manage Blogs</Button></Link>
                     </Box>
                 }
-                <Link to="/home" style={{ textDecoration: 'none',marginLeft:'10px' }}><Button onClick={logout} variant="outlined" sx={{ width: '90%', my: 2 }}><i className="fal fa-sign-out-alt"></i> Log out</Button></Link>
+                <Link to="/login" style={{ textDecoration: 'none',marginLeft:'10px' }}><Button onClick={logout} variant="outlined" sx={{ width: '90%', my: 2 }}><i className="fal fa-sign-out-alt"></i> Log out</Button></Link>
             </List>
         </div>
     );
-
     const container = window !== undefined ? () => window().document.body : undefined;
-
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -123,6 +120,18 @@ function Dashboard(props) {
                 <Toolbar />
                 <Switch>
                     <Route exact path={path}>
+                        <div className='d-flex align-items-center justify-content-center gap-5'>
+                            <img style={{borderRadius:'50%'}} src={user.photoURL} alt={user.displayName}></img>                          
+                        </div>
+                        <div className='badge'>
+                            
+                        </div>
+
+                        <div className='d-flex align-items-center justify-content-center gap-5'>
+                        <h1 className='text-4xl text-center d-flex'>{user.displayName}{admin === true?
+                         <small><i class="fal fa-user-shield text-green-700 ms-1"></i></small>:<small><i class="fal fa-badge-check text-green-700 ms-1"></i></small>}</h1>
+                        </div>
+                        <p className='text-1xl text-center'>{user.email}</p>
                     </Route>
                     <Route path={`${path}/review`}>
                         <Review></Review>
@@ -143,10 +152,6 @@ function Dashboard(props) {
 }
 
 Dashboard.propTypes = {
-    /**
-     * Injected by the documentation to work in an iframe.
-     * You won't need it on your project.
-     */
     window: PropTypes.func,
 };
 

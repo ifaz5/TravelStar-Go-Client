@@ -40,9 +40,6 @@ const useFirebase = () => {
     }
     const verifyEmail= () =>{
         sendEmailVerification(auth.currentUser)
-        .then(result=>{
-            console.log(result);
-        })
     }
     const loginUser = (email, photoUrl, password, location, history) => {
         setIsLoading(true);
@@ -130,6 +127,7 @@ const useFirebase = () => {
         authError,
         registerUser,
         loginUser,
+        verifyEmail,
         signInWithGoogle,
         logout,
     }

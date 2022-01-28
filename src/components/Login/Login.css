@@ -1,4 +1,33 @@
-.box {
-  width: 250px;
-  height: 200px;
+.form {
+  max-width: 26rem;
+  width: 100%;
+}
+.loader{
+  width: 270px;
+  height: 220px;
+}
+.login-btn {
+  font-size: 19px;
+}
+.login-btn img {
+  width: 40px;
+}
+
+.title {
+  color: #16161a;
+  /* font-size: 2.2rem; */
+}
+.Signinbtn{
+  border: 1px solid grey;
+  padding: 7px;
+  background-color: white;
+  border-radius: 30px;
+}
+@media only screen and (max-width: 688px) {
+  .login-btn {
+    font-size: 15px;
+  }
+  .login-btn img {
+    width: 30px;
+  }
 }

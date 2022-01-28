@@ -1,0 +1,7 @@
+     @media (max-width:456px){
+        .manage{
+        height: 100%;
+        overflow-x: hidden;
+        width: 100%;
+    }
+    }

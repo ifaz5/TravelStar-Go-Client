@@ -4,7 +4,7 @@ import * as ImIcons from 'react-icons/im'
 import { Card } from 'react-bootstrap';
 import './Blog.css'
 const Blog = ({service}) => {
-    const { name, photoUrl,description, ratings } = service?.data;
+    const { name, photoUrl, description, ratings } = service?.data;
     const { bloggername,status } = service;
     const history = useHistory();
     const handleBooking = (id) => {

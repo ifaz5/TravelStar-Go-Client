@@ -42,17 +42,19 @@ const Banner = () => {
   <div className="carousel-item first active">
         <div className='home-banner home-banner-1'>
             <div className='home-banner-text mt-md-3'>
-            <h1 className='ms-5 text-3xl'>100% trusted and purity</h1>
+            <h1 className='ms-5 text-3xl'>Better Customer Caring</h1>
 
-            <p className='ms-5'><b>We provide most cheap rate pricing in Bangladesh.</b></p>
+            <p className='ms-5 text-2xl customp'><b>We are one of the best agencies
+            <br className="cbr"/> who cares about cutomers</b></p>
             </div>
         </div>
     </div>
     <div className="carousel-item second">
     <div className='home-banner home-banner-1'>
             <div className='home-banner-text mt-md-3'>
-            <h1 className='ms-5 text-3xl'>100% trusted and purity</h1>
-            <p className='ms-5'><b>We provide most cheap rate pricing in Bangladesh.</b></p>
+            <h1 className='ms-5  text-3xl'>100% trusted and purity</h1>
+            <p className='ms-5 text-2xl text-yellow-400'><b>You can trust us. Because,
+              <br className="cbr"/> we are always here for you</b></p>
             </div>
 
         </div>
@@ -61,7 +63,8 @@ const Banner = () => {
     <div className='home-banner home-banner-1'>
             <div className='home-banner-text mt-md-3'>
             <h1 className='ms-5 text-3xl'>Better Hotel Arrangement</h1>
-            <p className='ms-5'><b>We provide one of the most cheap rate pricing in Bangladesh.</b></p>
+            <p className='ms-5 text-2xl customp'><b>We arrange best hotel
+              <br className="cbr"/> in the location</b></p>
             </div>
         </div>
     </div>
@@ -69,7 +72,8 @@ const Banner = () => {
     <div className='home-banner home-banner-1'>
             <div className='home-banner-text mt-md-3'>
             <h1 className='ms-5 text-3xl'>Most cheap pricing rate</h1>
-            <p className='ms-5'><b>We provide one of the most cheap rate pricing in Bangladesh.</b></p>
+            <p className='ms-5 text-2xl customp'><b>We provide one of the most cheap
+            <br className="cbr"/> rate pricing in Bangladesh.</b></p>
             </div>
         </div>
     </div>

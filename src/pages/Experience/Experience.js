@@ -10,7 +10,7 @@ const Experience = ({ review }) => {
 
   return (
       <div className='container'>
-      <div style={{height:'100%',minHeight:'270px'}} className="container card shadow-none cardContainer">
+      <div style={{height:'100%',minHeight:'270px'}} className="container card border-0 shadow-none cardContainer">
         <div >
         <div className="reviewper">
           <div className='d-flex align-items-center justify-content-center'><img variant="top" alt='' src={img} className="image-revw cs"/>

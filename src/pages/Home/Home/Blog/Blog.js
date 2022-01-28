@@ -13,15 +13,13 @@ const Blog = ({service}) => {
     return (
         <section className='mt-3'>
           {status === "Approved" ?
-
-          
           <div className="col">
-                  <div className="card border-0">
+                  <div className="border-0">
                     <div className="d-flex align-items-center justify-content-center">
                     <img style={{width:'300px',height:'200px'}} src={photoUrl} alt={name}></img>
                     </div>
                     <div className="card-body">
-                      <h3 className="card-title text-center">{name}</h3>
+                      <h3 className="card-title text-2xl text-center">{name}</h3>
                       <p className='text-center'><small>By <b>{bloggername}</b></small></p>
                       {
             ratings === '1' && <Card.Text style={{color:'goldenrod'}} className="items-center justify-center flex text-yellow-400">

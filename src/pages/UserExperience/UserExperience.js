@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import useAuth from '../../Hooks/useAuth';
 import {Alert} from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import './UserExperience.css'
-const UserExperience = ({service}) => {
+import { useParams } from 'react-router-dom';
+const UserExperience = () => {
+    
     const [open, setOpen] = React.useState(false);
     const [success,setSuccess] = useState(false);
      const {user} = useAuth();
@@ -29,7 +31,14 @@ const UserExperience = ({service}) => {
     
         setOpen(false);
       };
-    
+      const [service, setService] = useState();
+      const { id } = useParams({});
+        useEffect(() => {
+          const url = `https://pacific-oasis-98239.herokuapp.com/services/${id}`;
+            fetch(url)
+                .then(res => res.json())
+                .then(data => setService(data))              
+        })
     const onSubmit = review => {
         fetch('https://pacific-oasis-98239.herokuapp.com/reviews', {
             method: 'POST',
@@ -50,14 +59,22 @@ const UserExperience = ({service}) => {
     return (
         <div className="sm:flex block">
             <div className=" mx-auto mt-4 text-center">
-                <h4 className="text-green-500">Share experience about this blog</h4>
-                <h6>You will review using name : {user.displayName}</h6>
+                <h4 className="text-green-500 text-3xl">Share experience about this blog</h4>
+                <h6>You will review using name : {user.displayName} and profile pic :-</h6>
+                <h6>Review on: {service?.data.name}</h6>
+                <div className='d-flex align-items-center justify-content-center'>
+                <img className='radius' alt={user.displayName} src={user.photoURL}></img>
+                </div>
                 <form className="flex flex-col w-100" onSubmit={handleSubmit(onSubmit)}>
-                    <input onBlur={handleOnBlur} className="border-2 border-gray-300 m-2 px-2 rounded d-none" {...register("name", {required: true})} defaultValue={user.displayName} placeholder="Name"/>
-                    <textarea onBlur={handleOnBlur} className="border-2 border-gray-300 m-2 px-2 rounded" {...register("description", {required: true})} placeholder="Description"/>
-                    <input onBlur={handleOnBlur} defaultValue={user.photoURL} className="border-2 border-gray-300 m-2 px-2 d-none rounded" {...register("img", {required: true})} placeholder="Photo Url"/>
-                    <input onBlur={handleOnBlur} className="border-2 border-gray-300 m-2 px-2 rounded" {...register("reviewOn", {required: true})} defaultValue={service?.data.name} placeholder="reviewOn"/>
-                    <input onBlur={handleOnBlur} className="border-2 border-gray-300 m-2 px-2 rounded" type="number" {...register("ratings", {required: true})} defaultValue={5} max={5} placeholder="Ratings"/>
+                    <input onBlur={handleOnBlur} className="border-2 border-gray-300 m-2 px-2 d-none" {...register("name", {required: true})} defaultValue={user.displayName} placeholder="Name"/>
+                    <textarea onBlur={handleOnBlur} className="border-2 border-gray-300 m-2 p-2" {...register("description", {required: true})} placeholder="Description"/>
+                    <input onBlur={handleOnBlur} defaultValue={user.photoURL} className="border-2 border-gray-300 m-2 px-2 d-none rounded-full" {...register("img", {required: true})} placeholder="Photo Url"/>
+                    <div className='d-flex align-items-center justify-content-center'>
+                    <input type='text' onBlur={handleOnBlur} className="border-2 istyle  border-gray-300 m-2 h-10 px-2 rounded-full" {...register("reviewOn", {required: true})} defaultValue={service?.data.name} placeholder="reviewOn"/>
+                    </div>
+                    <div className='d-flex align-items-center justify-content-center'>
+                    <input onBlur={handleOnBlur} className="border-2 rstyle border-gray-300 h-10 m-2 px-2 rounded-full" type="number" {...register("ratings", {required: true})} defaultValue={5} max={5} placeholder="Ratings"/>
+                    </div>                  
                     <div className='items-center justify-center flex'>
                         <button onClick={handleClick} className='button-review w-35 text-center' type="submit" value="Share Experience">ㅤShare <i class="fal fa-share-alt ico"></i></button>
                     </div>

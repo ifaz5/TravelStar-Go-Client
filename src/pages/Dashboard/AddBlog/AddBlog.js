@@ -25,7 +25,7 @@ const AddBlog = () => {
       };
     
     const onSubmit = data => {
-        fetch('https://evening-inlet-76066.herokuapp.com/services', {
+        fetch('https://pacific-oasis-98239.herokuapp.com/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

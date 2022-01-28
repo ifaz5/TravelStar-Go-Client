@@ -7,7 +7,7 @@ const UpdateProduct = () => {
   const [isUpdate, setIsUpdated] = useState(null);
   const [product, setProduct] = useState({});
   useEffect(() => {
-    fetch(`https://evening-inlet-76066.herokuapp.com/singleProduct/${productId}`)
+    fetch(`https://pacific-oasis-98239.herokuapp.com/singleProduct/${productId}`)
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, [productId, isUpdate]);
@@ -18,7 +18,7 @@ const UpdateProduct = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    fetch(`https://evening-inlet-76066.herokuapp.com/update/${productId}`, {
+    fetch(`https://pacific-oasis-98239.herokuapp.com/update/${productId}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

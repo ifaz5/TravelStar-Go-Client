@@ -9,7 +9,7 @@ const Services = () => {
                 const {user} = useFirebase();
                 console.log(user);
                 useEffect(() => {
-                    const url = `http://localhost:5000/services?email=${user.email}`;
+                    const url = `https://pacific-oasis-98239.herokuapp.com/services?email=${user.email}`;
                     fetch(url)
                         .then(res => res.json())
                         .then(data => {

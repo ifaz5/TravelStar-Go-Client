@@ -5,7 +5,7 @@ const BlogDescription = () => {
     const [service, setService] = useState();
     const { id } = useParams({});
       useEffect(() => {
-        const url = `https://evening-inlet-76066.herokuapp.com/services/${id}`;
+        const url = `https://pacific-oasis-98239.herokuapp.com/services/${id}`;
           fetch(url)
               .then(res => res.json())
               .then(data => setService(data))              

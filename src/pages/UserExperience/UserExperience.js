@@ -31,7 +31,7 @@ const UserExperience = ({service}) => {
       };
     
     const onSubmit = review => {
-        fetch('https://evening-inlet-76066.herokuapp.com/reviews', {
+        fetch('https://pacific-oasis-98239.herokuapp.com/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

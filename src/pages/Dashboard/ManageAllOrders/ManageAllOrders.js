@@ -5,7 +5,7 @@ const ManageAllOrders = () => {
     const [services, setServices] = useState([]);
     const [reload, setReload] = useState(false);
     useEffect(() => {
-        fetch('https://evening-inlet-76066.herokuapp.com/services')
+        fetch('https://pacific-oasis-98239.herokuapp.com/services')
         .then(res => res.json())
         .then(data => setServices(data.result))
     },[])
@@ -14,7 +14,7 @@ const ManageAllOrders = () => {
         console.log(id)
         const proceed = window.confirm('Are you sure, you want to delete?')
         if (proceed) {
-            const url = `https://evening-inlet-76066.herokuapp.com/services/${id}`;
+            const url = `https://pacific-oasis-98239.herokuapp.com/services/${id}`;
             fetch(url, {
                     method: 'DELETE',
                 })
@@ -31,7 +31,7 @@ const ManageAllOrders = () => {
     const handleConfirm = (id) => {
         const confirmation = window.confirm('Are you sure you want to Confirm!');
         if (confirmation) {
-            fetch(`https://evening-inlet-76066.herokuapp.com/services/${id}`, {
+            fetch(`https://pacific-oasis-98239.herokuapp.com/services/${id}`, {
                 method: 'PUT',
             })
                 .then(res => res.json())

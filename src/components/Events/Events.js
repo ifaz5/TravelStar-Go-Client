@@ -5,7 +5,7 @@ import "./Events.css";
 const Events = () => {
   const [event, setEvent] = useState([]);
   useEffect(() => {
-    fetch("https://evening-inlet-76066.herokuapp.com/allEvents")
+    fetch("https://pacific-oasis-98239.herokuapp.com/allEvents")
       .then((response) => response.json())
       .then((data) => setEvent(data));
   }, []);

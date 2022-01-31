@@ -10,7 +10,7 @@ const Experience = ({ review }) => {
 
   return (
       <div className='container'>
-      <div style={{height:'100%',minHeight:'270px'}} className="container card border-0 shadow-none cardContainer">
+      <div style={{height:'100%',minHeight:'270px',backgroundImage: `url("https://media.istockphoto.com/photos/white-abstract-marble-texture-silver-grey-light-background-wave-swirl-picture-id1277592603?b=1&k=20&m=1277592603&s=170667a&w=0&h=4-uL8pdN5DRnmaKKGzCX8QQ4BTFvnTQUhsQWJuYHgBk=")`}} className="container card border-0 shadow-none cardContainer">
         <div >
         <div className="reviewper">
           <div className='d-flex align-items-center justify-content-center'><img variant="top" alt='' src={img} className="image-revw cs"/>

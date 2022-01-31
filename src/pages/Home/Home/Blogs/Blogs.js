@@ -11,7 +11,7 @@ const Blogs = () => {
   const { isLoading } = useAuth();
     const size =10; 
     useEffect(() => {
-        fetch(`https://pacific-oasis-98239.herokuapp.com/services?page=${page}&&size=${size}`)
+        fetch(`https://travelstar-go.herokuapp.com/services?page=${page}&&size=${size}`)
         .then(res  => res.json())
         .then(data => {
             setServices(data.result);

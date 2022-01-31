@@ -11,7 +11,7 @@ const MakeAdmin = () => {
     }
     const handleAdminSubmit = e =>{
         const user = {email}
-        fetch('https://pacific-oasis-98239.herokuapp.com/users/admin',{
+        fetch('https://travelstar-go.herokuapp.com/users/admin',{
             method: 'PUT',
             headers:{
                 'authorization':`Bearer ${token}`,
@@ -26,7 +26,6 @@ const MakeAdmin = () => {
                 setEmail('')
             }
         })
-       
         e.preventDefault()
     } 
     return (

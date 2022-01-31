@@ -34,13 +34,13 @@ const UserExperience = () => {
       const [service, setService] = useState();
       const { id } = useParams({});
         useEffect(() => {
-          const url = `https://pacific-oasis-98239.herokuapp.com/services/${id}`;
+          const url = `https://travelstar-go.herokuapp.com/services/${id}`;
             fetch(url)
                 .then(res => res.json())
                 .then(data => setService(data))              
         })
     const onSubmit = review => {
-        fetch('https://pacific-oasis-98239.herokuapp.com/reviews', {
+        fetch('https://travelstar-go.herokuapp.com/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -57,7 +57,7 @@ const UserExperience = () => {
     };
 
     return (
-        <div className="sm:flex block">
+        <div className="sm:flex block container">
             <div className=" mx-auto mt-4 text-center">
                 <h4 className="text-green-500 text-3xl">Share experience about this blog</h4>
                 <h6>You will review using name : {user.displayName} and profile pic :-</h6>
@@ -68,7 +68,11 @@ const UserExperience = () => {
                 <form className="flex flex-col w-100" onSubmit={handleSubmit(onSubmit)}>
                     <input onBlur={handleOnBlur} className="border-2 border-gray-300 m-2 px-2 d-none" {...register("name", {required: true})} defaultValue={user.displayName} placeholder="Name"/>
                     <textarea onBlur={handleOnBlur} className="border-2 border-gray-300 m-2 p-2" {...register("description", {required: true})} placeholder="Description"/>
-                    <input onBlur={handleOnBlur} defaultValue={user.photoURL} className="border-2 border-gray-300 m-2 px-2 d-none rounded-full" {...register("img", {required: true})} placeholder="Photo Url"/>
+                    {
+                      user.photoURL === "POST" ?
+                      <input onBlur={handleOnBlur} defaultValue={'https://i.ibb.co/qgbdqZ3/male.png'} className="border-2 border-gray-300 m-2 px-2 rounded-full" {...register("img")} placeholder="Photo Url"/>:
+                      <input onBlur={handleOnBlur} defaultValue="" className="border-2 border-gray-300 m-2 px-2 rounded-full" {...register("img")} placeholder="Photo Url"/>
+                    }
                     <div className='d-flex align-items-center justify-content-center'>
                     <input type='text' onBlur={handleOnBlur} className="border-2 istyle  border-gray-300 m-2 h-10 px-2 rounded-full" {...register("reviewOn", {required: true})} defaultValue={service?.data.name} placeholder="reviewOn"/>
                     </div>

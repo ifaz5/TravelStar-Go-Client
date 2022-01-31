@@ -44,7 +44,6 @@ function Dashboard(props) {
             <Link style={{ textDecoration: 'none', color: 'white',marginLeft:'10px'}} to='/'><Button variant="outlined" sx={{ width: '90%',my:2 }}><i className="fal fa-home"></i> Home</Button></Link>
             <Link style={{ textDecoration: 'none', color: 'white',marginLeft:'10px' }} to={`${url}/writeBlog`}><Button variant="outlined" sx={{  width: '90%' }}><i class="fal fa-layer-plus"></i> Add Blog</Button></Link>
             <List style={{marginTop:'5px' }}>
-                
                 {
                     admin && <Box>                        
                         <Link style={{ textDecoration: 'none', color: 'white',marginLeft:'10px' }} to={`${url}/makeAdmin`}><Button variant="outlined" sx={{ width: '90%' }}><i class="fal fa-user-cog"></i>Make Admin</Button></Link>
@@ -66,7 +65,7 @@ function Dashboard(props) {
                     ml: { sm: `${drawerWidth}px` },
                 }}
             >
-                <Toolbar>
+                <Toolbar style={{backgroundColor:'#a0e8f1'}}>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"

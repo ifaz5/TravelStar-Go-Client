@@ -60,7 +60,7 @@ const Login = ({limit}) => {
             </NavLink>
             </div>
             <br/>
-            {isLoading && <img src={loading} alt='' className='position-absolute top-50 start-50 loader translate-middle' />}
+            {isLoading && <img src={loading} alt='loading...' className='position-absolute top-50 start-50 loader translate-middle overflow-hidden' />}
             {user?.email && <><Alert sx={{width:'76%'}} severity="success">You account is logged in successfully</Alert><br/></>}
             {authError && <><Alert sx={{width:'76%'}} severity="error">{authError.slice(16,limit)}</Alert> <br/></>}
           </form>

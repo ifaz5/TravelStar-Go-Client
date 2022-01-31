@@ -8,7 +8,7 @@ const Experiences = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch("https://pacific-oasis-98239.herokuapp.com/reviews")
+        fetch("https://travelstar-go.herokuapp.com/reviews")
             .then(res => res.json())
             .then(data => setReviews(data))
     }, []);

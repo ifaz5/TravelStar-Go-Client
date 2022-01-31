@@ -15,17 +15,14 @@ const AddBlog = () => {
     const handleClick = () => {
         setOpen(true);
       };
-    
       const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
           return;
         }
-    
         setOpen(false);
       };
-    
     const onSubmit = data => {
-        fetch('https://pacific-oasis-98239.herokuapp.com/services', {
+        fetch('https://travelstar-go.herokuapp.com/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -40,26 +37,18 @@ const AddBlog = () => {
             }
         })
     };
-
     return (
-        <div className="sm:flex block">
+        <div style={{marginTop:'-80px'}} className="sm:flex block">
             <div className=" mx-auto mt-4 text-center">
-                <h1 className="text-green-500">Add Blog</h1>
+                <h1 className="text-green-500 text-3xl">Add Blog</h1>
                 <form className="flex flex-col w-100" onSubmit={handleSubmit(onSubmit)}>
                     <input className="border-2 border-gray-300 m-2 px-2 rounded-full p-2" {...register("name", {required: true})} placeholder="Place Name"/>
-
                     <textarea className="border-2 border-gray-300 m-2 p-3 rounded-full" {...register("description", {required: true})} placeholder="Place description"/>
-
                     <input className="border-2 border-gray-300 m-2 p-2 rounded-full" {...register("price", {required: true})} placeholder="Expense" type="number"/>
-
                     <input className="border-2 border-gray-300 m-2 p-2 rounded-full" {...register("ratings", {required: true})} defaultValue={5} max={5} min={1} placeholder="Ratings in number" type="number"/>
-
                     <input className="border-2 border-gray-300 m-2 p-2 rounded-full" {...register("photoUrl", {required: true})} placeholder="Photo Url"/>
-
                     <input className="border-2 border-gray-300 m-2 p-2 rounded-full" {...register("photoUrl2")} placeholder="Photo Url 2 (optional)"/>
-
                     <input className="border-2 border-gray-300 m-2 p-2 rounded-full" {...register("photoUrl3")} placeholder="Photo Url 3 (optional)"/>
-
                     <button onClick={handleClick} className='button-review rounded-full' type="submit" value="Add Product">ㅤAdd <i class="fal fa-layer-plus ico"></i></button>
                 </form>
                 {success && <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>

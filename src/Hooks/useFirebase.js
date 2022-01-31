@@ -87,7 +87,7 @@ const useFirebase = () => {
     }, [auth])
 
     useEffect(() => {
-        fetch(`https://pacific-oasis-98239.herokuapp.com/users/${user?.email}`)
+        fetch(`https://travelstar-go.herokuapp.com/users/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setAdmin(data.admin);
@@ -109,7 +109,7 @@ const useFirebase = () => {
     const saveUser = (email, displayName, photoURL) => {
         const userPhoto = photoURL || "https://i.ibb.co/qgbdqZ3/male.png";
         const user = { email, displayName, userPhoto };
-        fetch('https://pacific-oasis-98239.herokuapp.com/users', {
+        fetch('https://travelstar-go.herokuapp.com/users', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

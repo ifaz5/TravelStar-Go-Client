@@ -9,7 +9,7 @@ const Services = () => {
                 const {user} = useFirebase();
                 console.log(user);
                 useEffect(() => {
-                    const url = `https://pacific-oasis-98239.herokuapp.com/users`;
+                    const url = `https://travelstar-go.herokuapp.com/users`;
                     fetch(url)
                         .then(res => res.json())
                         .then(data => {

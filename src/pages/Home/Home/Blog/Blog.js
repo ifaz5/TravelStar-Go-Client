@@ -8,7 +8,7 @@ const Blog = ({service}) => {
     const { bloggername,status } = service;
     const history = useHistory();
     const handleBooking = (id) => {
-        history.push(`/orderReview/${id}`)
+        history.push(`/blogDecription/${id}`)
     }
     return (
         <section className='mt-3'>

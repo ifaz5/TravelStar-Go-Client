@@ -27,7 +27,7 @@ const ManageAllOrder = ({service,handleConfirm,handleDeleteService
             </td>
             </td>
         </tr>
-        
+    
     )
 };
 

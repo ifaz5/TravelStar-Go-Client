@@ -1,87 +1,91 @@
-import { Container } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import Blog from '../Blog/Blog'
-import { Skeleton } from '@mui/material';
-import { Box } from '@mui/system';
-import useAuth from '../../../../Hooks/useAuth';
+import { Container } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import Blog from "../Blog/Blog";
+import { Skeleton } from "@mui/material";
+import { Box } from "@mui/system";
+import useAuth from "../../../../Hooks/useAuth";
 const Blogs = () => {
-    const [services, setServices] = useState([]);
-    const [pageCount, setPageCount] = useState([]);
-    const [page, setPage] = useState(0);
+  const [services, setServices] = useState([]);
+  const [pageCount, setPageCount] = useState([]);
+  const [page, setPage] = useState(0);
   const { isLoading } = useAuth();
-    const size =10; 
-    useEffect(() => {
-        fetch(`https://travelstar-go.herokuapp.com/services?page=${page}&&size=${size}`)
-        .then(res  => res.json())
-        .then(data => {
-            setServices(data.result);
-            const count = data.count;
-            const pageNumber = Math.ceil(count/size);
-            setPageCount(pageNumber)
-        });
+  const size = 10;
+  useEffect(() => {
+    fetch(
+      `https://travelstar-go-server.up.railway.app/services?page=${page}&&size=${size}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setServices(data.result);
+        const count = data.count;
+        const pageNumber = Math.ceil(count / size);
+        setPageCount(pageNumber);
+      });
+  }, [page]);
 
-    }, [page])
-
-    return (
-        <Container>
-          {isLoading ? 
-            <div className="row row-cols-1 mt-3 row-cols-md-3 row-cols-lg-4 g-3">
-          <div className='col'>
-              <Box pt={0.5}>
+  return (
+    <Container>
+      {isLoading ? (
+        <div className="row row-cols-1 mt-3 row-cols-md-3 row-cols-lg-4 g-3">
+          <div className="col">
+            <Box pt={0.5}>
               <Skeleton variant="rect" width={210} height={118} />
-              <br/>
-              <Skeleton variant='h1'  width="100%" />
+              <br />
+              <Skeleton variant="h1" width="100%" />
               <Skeleton width="100%" />
               <Skeleton variant="rect" width={70} height={25} />
             </Box>
-            </div>
-          <div className='col'>
-              <Box pt={0.5}>
-              <Skeleton  variant="rect" width={210} height={118} />
-              <br/>
-              <Skeleton variant='h1'  width="100%" />
-              <Skeleton  width="100%" />
-              <Skeleton  variant="rect" width={70} height={25} />
-            </Box>
-            </div>
-          <div className='col'>
-              <Box pt={0.5}>
-              <Skeleton variant="rect" width={210} height={118} />
-              <br/>
-              <Skeleton variant='h1' width="100%" />
-              <Skeleton width="100%" />
-              <Skeleton variant="rect" width={70} height={25} />
-            </Box>
-            </div>
-          <div className='col'>
-              <Box pt={0.5}>
-              <Skeleton   variant="rect" width={210} height={118} />
-              <br/>
-              <Skeleton variant='h1' width="100%" />
-              <Skeleton width="100%" />
-              <Skeleton variant="rect" width={70} height={25} />
-            </Box>
-            </div>
           </div>
-            :
-            <>
-            <div className="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3">
-            {
-                services.map(service => <Blog service={service} key={service._id} />)
-            }
+          <div className="col">
+            <Box pt={0.5}>
+              <Skeleton variant="rect" width={210} height={118} />
+              <br />
+              <Skeleton variant="h1" width="100%" />
+              <Skeleton width="100%" />
+              <Skeleton variant="rect" width={70} height={25} />
+            </Box>
+          </div>
+          <div className="col">
+            <Box pt={0.5}>
+              <Skeleton variant="rect" width={210} height={118} />
+              <br />
+              <Skeleton variant="h1" width="100%" />
+              <Skeleton width="100%" />
+              <Skeleton variant="rect" width={70} height={25} />
+            </Box>
+          </div>
+          <div className="col">
+            <Box pt={0.5}>
+              <Skeleton variant="rect" width={210} height={118} />
+              <br />
+              <Skeleton variant="h1" width="100%" />
+              <Skeleton width="100%" />
+              <Skeleton variant="rect" width={70} height={25} />
+            </Box>
+          </div>
         </div>
-        <div className='d-flex py-2 align-items-center justify-content-center'>
-            {
-            [...Array(pageCount).keys()].map(number => <button 
+      ) : (
+        <>
+          <div className="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3">
+            {services.map((service) => (
+              <Blog service={service} key={service._id} />
+            ))}
+          </div>
+          <div className="d-flex py-2 align-items-center justify-content-center">
+            {[...Array(pageCount).keys()].map((number) => (
+              <button
                 key={number}
                 onClick={() => setPage(number)}
-                className={number === page ? 'selected' : 'not-selected'}>{number}</button>)
-            }
-        </div>
-            </>}
-        </Container>
-        
-    );
+                className={number === page ? "selected" : "not-selected"}
+              >
+                {number}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+    </Container>
+  );
 };
 
 export default Blogs;

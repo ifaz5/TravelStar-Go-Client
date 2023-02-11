@@ -7,7 +7,9 @@ const UpdateProduct = () => {
   const [isUpdate, setIsUpdated] = useState(null);
   const [product, setProduct] = useState({});
   useEffect(() => {
-    fetch(`https://travelstar-go.herokuapp.com/singleProduct/${productId}`)
+    fetch(
+      `https://travelstar-go-server.up.railway.app/singleProduct/${productId}`
+    )
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, [productId, isUpdate]);
@@ -18,7 +20,7 @@ const UpdateProduct = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    fetch(`https://travelstar-go.herokuapp.com/update/${productId}`, {
+    fetch(`https://travelstar-go-server.up.railway.app/update/${productId}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

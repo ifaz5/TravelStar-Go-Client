@@ -7,7 +7,7 @@ const ManageBlogs = () => {
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
-    fetch("https://travelstar-go-server.up.railway.app/services")
+    fetch("https://travelstar-go-server.onrender.com/services")
       .then((res) => res.json())
       .then((data) => setServices(data.result));
   }, []);
@@ -16,7 +16,7 @@ const ManageBlogs = () => {
     console.log(id);
     const proceed = window.confirm("Are you sure, you want to delete?");
     if (proceed) {
-      const url = `https://travelstar-go-server.up.railway.app/services/${id}`;
+      const url = `https://travelstar-go-server.onrender.com/services/${id}`;
       fetch(url, {
         method: "DELETE",
       })
@@ -36,7 +36,7 @@ const ManageBlogs = () => {
     e.preventDefault();
     const confirmation = window.confirm("Are you sure you want to Confirm!");
     if (confirmation) {
-      fetch(`https://travelstar-go-server.up.railway.app/confirmation/${id}`, {
+      fetch(`https://travelstar-go-server.onrender.com/confirmation/${id}`, {
         method: "PUT",
       })
         .then((res) => res.json())

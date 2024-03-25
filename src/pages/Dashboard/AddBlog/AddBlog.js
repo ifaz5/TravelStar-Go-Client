@@ -22,7 +22,7 @@ const AddBlog = () => {
     setOpen(false);
   };
   const onSubmit = (data) => {
-    fetch("https://travelstar-go-server.up.railway.app/services", {
+    fetch("https://travelstar-go-server.onrender.com/services", {
       method: "POST",
       headers: {
         "content-type": "application/json",

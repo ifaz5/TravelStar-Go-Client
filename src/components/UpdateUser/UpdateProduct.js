@@ -8,7 +8,7 @@ const UpdateProduct = () => {
   const [product, setProduct] = useState({});
   useEffect(() => {
     fetch(
-      `https://travelstar-go-server.up.railway.app/singleProduct/${productId}`
+      `https://travelstar-go-server.onrender.com/singleProduct/${productId}`
     )
       .then((res) => res.json())
       .then((data) => setProduct(data));
@@ -20,7 +20,7 @@ const UpdateProduct = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    fetch(`https://travelstar-go-server.up.railway.app/update/${productId}`, {
+    fetch(`https://travelstar-go-server.onrender.com/update/${productId}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

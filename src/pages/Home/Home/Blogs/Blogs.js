@@ -12,7 +12,7 @@ const Blogs = () => {
   const size = 10;
   useEffect(() => {
     fetch(
-      `https://travelstar-go-server.up.railway.app/services?page=${page}&&size=${size}`
+      `https://travelstar-go-server.onrender.com/services?page=${page}&&size=${size}`
     )
       .then((res) => res.json())
       .then((data) => {

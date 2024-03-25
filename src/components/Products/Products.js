@@ -5,7 +5,7 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [isDelete, setIsDelete] = useState(null);
   useEffect(() => {
-    fetch("https://travelstar-go-server.up.railway.app/products")
+    fetch("https://travelstar-go-server.onrender.com/products")
       .then((response) => response.json())
       .then((data) => setProducts(data));
   }, [isDelete]);
@@ -13,7 +13,7 @@ const Products = () => {
   const handleDeleteProduct = (id) => {
     console.log(id);
 
-    fetch(`https://travelstar-go-server.up.railway.app/deleteProduct/${id}`, {
+    fetch(`https://travelstar-go-server.onrender.com/deleteProduct/${id}`, {
       method: "DELETE",
       headers: { "Content-type": "application/json" },
     })
@@ -30,7 +30,7 @@ const Products = () => {
   const handleAddToCart = (index) => {
     const data = products[index];
     data.email = "ami@gmail.com";
-    fetch(`https://travelstar-go-server.up.railway.app/addOrders`, {
+    fetch(`https://travelstar-go-server.onrender.com/addOrders`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

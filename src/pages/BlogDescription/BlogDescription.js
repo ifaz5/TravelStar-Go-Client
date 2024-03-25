@@ -31,13 +31,13 @@ const BlogDescription = () => {
   const [service, setService] = useState();
   const { id } = useParams({});
   useEffect(() => {
-    const url = `https://travelstar-go-server.up.railway.app/services/${id}`;
+    const url = `https://travelstar-go-server.onrender.com/services/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setService(data));
   });
   const onSubmit = (review) => {
-    fetch("https://travelstar-go-server.up.railway.app/reviews", {
+    fetch("https://travelstar-go-server.onrender.com/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",

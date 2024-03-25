@@ -8,7 +8,7 @@ const Experiences = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch("https://travelstar-go-server.up.railway.app/reviews")
+    fetch("https://travelstar-go-server.onrender.com/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);

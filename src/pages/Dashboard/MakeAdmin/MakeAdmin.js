@@ -11,7 +11,7 @@ const MakeAdmin = () => {
   };
   const handleAdminSubmit = (e) => {
     const user = { email };
-    fetch("https://travelstar-go-server.up.railway.app/users/admin", {
+    fetch("https://travelstar-go-server.onrender.com/users/admin", {
       method: "PUT",
       headers: {
         authorization: `Bearer ${token}`,

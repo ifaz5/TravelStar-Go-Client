@@ -9,7 +9,7 @@ const Services = () => {
   const { user } = useFirebase();
   console.log(user);
   useEffect(() => {
-    const url = `https://travelstar-go-server.up.railway.app/users`;
+    const url = `https://travelstar-go-server.onrender.com/users`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

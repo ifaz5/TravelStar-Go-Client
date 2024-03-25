@@ -98,7 +98,7 @@ const useFirebase = () => {
   }, [auth]);
 
   useEffect(() => {
-    fetch(`https://travelstar-go-server.up.railway.app/users/${user?.email}`)
+    fetch(`https://travelstar-go-server.onrender.com/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setAdmin(data.admin);
@@ -120,7 +120,7 @@ const useFirebase = () => {
   const saveUser = (email, displayName, photoURL) => {
     const userPhoto = photoURL || "https://i.ibb.co/qgbdqZ3/male.png";
     const user = { email, displayName, userPhoto };
-    fetch("https://travelstar-go-server.up.railway.app/users", {
+    fetch("https://travelstar-go-server.onrender.com/users", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
